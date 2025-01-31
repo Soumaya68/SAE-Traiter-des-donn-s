@@ -8,3 +8,4 @@ $repertoire_de_base = "/Users/soumaya/Library/CloudStorage/OneDrive-Personnel/Ma
 
 # Exécute le script Python avec le répertoire de base comme argument
 python3 "$chemin_python" "$repertoire_de_base"
+
