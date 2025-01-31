@@ -7,4 +7,4 @@ $chemin_python = "/Users/soumaya/PycharmProjects/SAE-Traiter-des-donn-s/analyse_
 $repertoire_de_base = "/Users/soumaya/Documents/BUT 1ère année"
 
 # Exécute le script Python avec le répertoire de base comme argument
-python3 $chemin_python $repertoire_de_base
+python3 "$chemin_python" "$repertoire_de_base"
