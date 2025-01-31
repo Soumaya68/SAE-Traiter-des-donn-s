@@ -49,7 +49,10 @@ def choisir_repertoire():
 # Fonction principale
 def main():
     # Ouvrir la boîte de dialogue pour sélectionner le répertoire
-    repertoire_de_base = choisir_repertoire()
+    if len(sys.argv) > 1:  # Vérifie si un argument a été passé par PowerShell
+        repertoire_de_base = sys.argv[1]
+    else:
+        repertoire_de_base = choisir_repertoire()  # Ouvre la boîte de dialogue si aucun argument
 
     # Vérifier si un répertoire a été sélectionné
     if not repertoire_de_base:
