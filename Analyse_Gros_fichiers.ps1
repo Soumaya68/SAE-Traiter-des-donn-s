@@ -4,7 +4,7 @@
 $chemin_python = "/Users/soumaya/PycharmProjects/SAE-Traiter-des-donn-s/analyse_fichiers.py"
 
 # Répertoire de base à analyser
-$repertoire_de_base = "/Users/soumaya/PycharmProjects/SAE-Traiter-des-donn-s/"
+$repertoire_de_base = "/Users/soumaya/Library/CloudStorage/OneDrive-Personnel/Cours"
 
 # Exécute le script Python avec le répertoire de base comme argument
 python3 "$chemin_python" "$repertoire_de_base"
