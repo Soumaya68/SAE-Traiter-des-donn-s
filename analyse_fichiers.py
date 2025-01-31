@@ -62,8 +62,6 @@ def main():
     fichiers_filtres = filtrer_fichiers(fichiers_triees, 10, 100)  # Filtrer pour > 10 Mo et max 100 fichiers
     sauvegarder_json(fichiers_filtres, 'resultats.json')  # Sauvegarder le résultat dans un fichier JSON
 
-    print(f"Le fichier JSON a été sauvegardé dans {repertoire_de_base}/resultats.json")
-
 
 # Exécution du script
 if __name__ == "__main__":
