@@ -1,7 +1,7 @@
 # Analyse_Gros_fichiers.ps1
 
 # Chemin vers ton fichier Python (mettez ici le chemin complet de ton fichier Python)
-$chemin_python = "/Users/ton_nom/chemin/vers/ton/script/analyse_fichiers.py"
+$chemin_python = "/Users/soumaya/PycharmProjects/SAE-Traiter-des-donn-s/analyse_fichiers.py"
 
 # Répertoire de base à analyser (remplace par ton répertoire d'analyse)
 $repertoire_de_base = "/Users/soumaya/Documents/BUT 1ère année"
