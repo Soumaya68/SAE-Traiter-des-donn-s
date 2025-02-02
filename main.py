@@ -1,3 +1,8 @@
+import os
+
+# Exécution du script analyse_fichiers.py
+os.system("python3 /Users/soumaya/PycharmProjects/SAE-Traiter-des-donn-s/analyse_fichiers.py")
+
 import json
 import sys
 import random
