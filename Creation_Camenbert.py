@@ -1,5 +1,5 @@
 #--------------------------------------------------------
-# Script : Creation_Camenbert.py
+# Script : Creation_Camembert.py
 # Destiné à la SAE 1.05 : traitement des données
 # Dev : O. ECKLE - Ver : 1.0 - Décembre 2024
 #--------------------------------------------------------
