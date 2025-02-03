@@ -6,7 +6,7 @@ if (-not $python) {
 }
 
 # Définir le chemin relatif du script Python
-$chemin_python = "$PSScriptRoot\main.py"
+$chemin_python = "/Users/soumaya/PycharmProjects/SAE-Traiter-des-donn-s/main.py"
 
 # Vérifie si le fichier existe
 if (-Not (Test-Path $chemin_python)) {
