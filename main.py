@@ -16,17 +16,17 @@ FICHIER_JSON = "resultats.json"
 # Exécuter analyse_fichiers.py AVANT de continuer
 subprocess.run(["python3", "analyse_fichiers.py"], check=True)
 
+# Charge les données du fichier JSON et retourne une liste de tuples (nom, taille).
 def charger_fichiers_json(nom_fichier):
-    """ Charge les données du fichier JSON et retourne une liste de tuples (nom, taille). """
     with open(nom_fichier, "r") as f:
         return json.load(f)
 
+# Génère une liste de couleurs aléatoires en format QColor.
 def generer_couleurs(nb):
-    """ Génère une liste de couleurs aléatoires en format QColor. """
     return [QColor(random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)) for _ in range(nb)]
 
+# Génère un script PowerShell pour supprimer les fichiers sélectionnés.
 def creation_script_suppression():
-    """ Génère un script PowerShell pour supprimer les fichiers sélectionnés. """
     fichiers_a_supprimer = []
     for legende in liste_legende:
         etats = legende.recupere_etats_cases_a_cocher()

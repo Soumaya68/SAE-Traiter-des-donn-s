@@ -3,24 +3,24 @@ import json
 import sys
 from PyQt5.QtWidgets import QApplication, QFileDialog
 
+# Récupère, trie et filtre les fichiers du répertoire donné
 def obtenir_fichiers(repertoire, taille_min, nb_max=100):
-    """ Récupère, trie et filtre les fichiers du répertoire donné """
     taille_min = taille_min * 1024 * 1024  # Conversion Mo → octets
     fichiers = [(str(f), f.stat().st_size) for f in pathlib.Path(repertoire).rglob('*') if f.is_file()]
     return sorted([f for f in fichiers if f[1] > taille_min], key=lambda x: x[1], reverse=True)[:nb_max]
 
+# Sauvegarde les données dans un fichier JSON
 def sauvegarder_json(data, fichier):
-    """ Sauvegarde les données dans un fichier JSON """
     with open(fichier, 'w') as f:
         json.dump(data, f, indent=4)
 
+# Ouvre une boîte de dialogue pour choisir un répertoire
 def choisir_repertoire():
-    """ Ouvre une boîte de dialogue pour choisir un répertoire """
     app = QApplication(sys.argv)
     return QFileDialog.getExistingDirectory(None, "Sélectionner un répertoire")
 
+# Fonction principale
 def main():
-    """ Fonction principale """
     if len(sys.argv) > 2:
         repertoire = sys.argv[1]
         taille_min = float(sys.argv[2])
