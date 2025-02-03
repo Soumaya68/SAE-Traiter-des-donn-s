@@ -1,8 +1,4 @@
-import os
-
-# Exécution du script analyse_fichiers.py
-os.system("python3 /Users/soumaya/PycharmProjects/SAE-Traiter-des-donn-s/analyse_fichiers.py")
-
+import subprocess
 import json
 import sys
 import random
@@ -14,20 +10,19 @@ from Creation_Legendes import Legendes
 from Creation_Boutons import Boutons
 
 NB_LEGENDES_PAR_PAGE = 25
-NB_MAXI_FICHIERS = 100
 FICHIER_JSON = "resultats.json"
 
+# Exécuter analyse_fichiers.py AVANT de continuer
+subprocess.run(["python3", "analyse_fichiers.py"], check=True)
 
 def charger_fichiers_json(nom_fichier):
     """ Charge les données du fichier JSON et retourne une liste de tuples (nom, taille). """
     with open(nom_fichier, "r") as f:
         return json.load(f)
 
-
 def generer_couleurs(nb):
     """ Génère une liste de couleurs aléatoires en format QColor. """
     return [QColor(random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)) for _ in range(nb)]
-
 
 def creation_script_suppression():
     """ Génère un script PowerShell pour supprimer les fichiers sélectionnés. """
@@ -53,32 +48,24 @@ def creation_script_suppression():
         f.write("} else { Write-Output \"Opération annulée...\" }\n")
     print("Script PowerShell généré : supprimer_fichiers.ps1")
 
-
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     fenetre = Onglets()
 
-    # Chargement des fichiers et génération des couleurs
     liste_fichiers = charger_fichiers_json(FICHIER_JSON)
     liste_couleurs = generer_couleurs(len(liste_fichiers))
 
-    # Ajout du camembert
     fromage = Camembert(liste_fichiers, liste_couleurs)
-    layout_fromage = fromage.dessine_camembert()
-    fenetre.add_onglet("Camembert", layout_fromage)
+    fenetre.add_onglet("Camembert", fromage.dessine_camembert())
 
-    # Ajout des légendes
     liste_legende = []
     for num_page in range((len(liste_fichiers) // NB_LEGENDES_PAR_PAGE) + 1):
         legende = Legendes(liste_fichiers, liste_couleurs, num_page * NB_LEGENDES_PAR_PAGE, NB_LEGENDES_PAR_PAGE)
         liste_legende.append(legende)
-        layout_legende = legende.dessine_legendes()
-        fenetre.add_onglet(f"Légende {num_page+1}", layout_legende)
+        fenetre.add_onglet(f"Légende {num_page+1}", legende.dessine_legendes())
 
-    # Ajout du bouton de suppression
     ihm = Boutons("./", creation_script_suppression)
-    layout_ihm = ihm.dessine_boutons()
-    fenetre.add_onglet("IHM", layout_ihm)
+    fenetre.add_onglet("IHM", ihm.dessine_boutons())
 
     fenetre.show()
     sys.exit(app.exec_())
