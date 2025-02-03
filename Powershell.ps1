@@ -1,26 +1,31 @@
-# Vérifie si Python est installé
+# Vérification de l'installation de Python
 $python = Get-Command python3 -ErrorAction SilentlyContinue
 if (-not $python) {
-    Write-Output "❌ Python3 n'est pas installé. Veuillez l'installer avant de continuer."
+    $python = Get-Command python -ErrorAction SilentlyContinue
+}
+
+if (-not $python) {
+    Write-Host "❌ Python n'est pas installé. Veuillez l'installer avant de continuer." -ForegroundColor Red
     exit
 }
 
-# Définir le chemin relatif du script Python
-$chemin_python = "/Users/soumaya/PycharmProjects/SAE-Traiter-des-donn-s/main.py"
+# Définition du chemin du script Python (chemin relatif)
+$chemin_python = Join-Path -Path $PSScriptRoot -ChildPath "main.py"
 
-# Vérifie si le fichier existe
+# Vérification de l'existence du fichier main.py
 if (-Not (Test-Path $chemin_python)) {
-    Write-Output "❌ Erreur : Le fichier main.py est introuvable !"
+    Write-Host "❌ Erreur : Le fichier main.py est introuvable à l'emplacement suivant : $chemin_python" -ForegroundColor Red
     exit
 }
 
-# Exécute le script Python
-Write-Output "▶️ Lancement de main.py..."
-python3 "$chemin_python"
+# Exécution du script Python
+Write-Host "▶️ Lancement de main.py..." -ForegroundColor Cyan
+& $python.Path "$chemin_python"
 
-# Vérifie si l'exécution a échoué
+# Vérification du statut d'exécution
 if ($LASTEXITCODE -ne 0) {
-    Write-Output "❌ Une erreur s'est produite lors de l'exécution du script Python."
+    Write-Host "❌ Une erreur s'est produite lors de l'exécution du script Python." -ForegroundColor Red
 } else {
-    Write-Output "✅ Exécution terminée avec succès !"
+    Write-Host "✅ Exécution terminée avec succès !" -ForegroundColor Green
 }
+
