@@ -28,4 +28,3 @@ if ($LASTEXITCODE -ne 0) {
 } else {
     Write-Host "✅ Exécution terminée avec succès !" -ForegroundColor Green
 }
-

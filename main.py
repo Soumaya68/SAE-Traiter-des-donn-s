@@ -10,6 +10,7 @@ from Creation_Legendes import Legendes
 from Creation_Boutons import Boutons
 
 NB_LEGENDES_PAR_PAGE = 25
+NB_MAXI_FICHIERS = 100
 FICHIER_JSON = "resultats.json"
 
 # Exécuter analyse_fichiers.py AVANT de continuer
@@ -69,3 +70,4 @@ if __name__ == "__main__":
 
     fenetre.show()
     sys.exit(app.exec_())
+
