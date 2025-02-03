@@ -13,7 +13,7 @@ NB_LEGENDES_PAR_PAGE = 25
 FICHIER_JSON = "resultats.json"
 
 # Exécuter analyse_fichiers.py AVANT de continuer
-subprocess.run(["python3", "analyse_fichiers.py"], check=True)
+subprocess.run(["python3", "analyse_fichiers.py"], check=True) #Sur Windows, remplacer cette ligne par : subprocess.run(["python", "analyse_fichiers.py"], check=True) (il suffit d'enlever le 3 de python3)
 
 # Charge les données du fichier JSON et retourne une liste de tuples (nom, taille).
 def charger_fichiers_json(nom_fichier):
